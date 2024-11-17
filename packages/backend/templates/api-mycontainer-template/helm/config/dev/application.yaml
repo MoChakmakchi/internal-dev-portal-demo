@@ -1,0 +1,91 @@
+api:
+  app-name: ${artifactId}
+  domain: ${domain}
+  main-event-name: api-v1-${api.domain}-${api.app-name}
+
+encryption:
+  status: false
+
+aviva:
+  integration:
+    securityrepository:
+      debug: true
+      uri: https://api.integration.dev.aws-euw1-np.avivacloud.com/core/v1/security-repository-server/auth
+
+# Enables debugging and authorization debugging (do not enable for higher environments)
+debug: false
+
+logging:
+  level:
+    root: INFO
+
+management:
+  endpoint:
+    health:
+      show-components: always
+      show-details: always
+  endpoints:
+    web:
+      base-path: /actuator
+      exposure:
+        include:
+          - health
+          - info
+          - metrics
+          - purgecache
+  health:
+    livenessstate:
+      enabled: true
+    r2dbc:
+      enabled: true
+    readinessstate:
+      enabled: true
+  info:
+    git:
+      mode: full
+  metrics:
+    distribution:
+      percentiles-histogram:
+        http:
+          server:
+            requests: true
+
+spring:
+  devtools:
+    # Disable for AWS
+    add-properties: true
+  jmx:
+    enabled: true
+  # Colourful logs for local debugging, as this makes it much easier to read.
+  # Disable for AWS.
+  output:
+    ansi:
+      enabled: ALWAYS
+  #Pretty print JSON output
+  jackson:
+    serialization:
+      indent-output: true
+
+server:
+  # Compression is good.
+  compression:
+    enabled: true
+    min-response-size: 512
+
+  # HTTP2 is good.
+  http2:
+    enabled: true
+
+  # Override with -Dserver.port=xxxx to override this.
+  port: 8080
+
+#  servlet:
+#    context-path: /${api.domain}/api/v1/${api.app-name}
+  
+  tomcat:
+    # Don't redirect `${server.servlet.context-path}` to `${server.servlet.context-path}/`, as it
+    # messes with the ALB...
+    redirect-context-root: false
+
+# Enables tracing and authorization debugging (do not enable for higher environments)
+trace: false

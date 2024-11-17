@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!--Use this package to ONLY If you API is using the XML-DSL.-->
+<!--All the API XML camel routes needs to be placed in this package.-->
+<!--if your API is a java-dsl  then delete the package.-->
+<routes xmlns="http://camel.apache.org/schema/spring">
+<!--    <route id="searchUserRoute" streamCache="true">-->
+<!--        <from uri="direct:searchUserRoute"/>-->
+<!--        <log message="configured entry for searchRoute"/>-->
+<!--        <bean ref="dataMapper" method="mapRequest"/>-->
+<!--        <to uri="cxfrs:bean:exampleEndpoint" id="exampleEndpointId"/>-->
+<!--        <bean ref="dataMapper" method="mapResponse"/>-->
+<!--    </route>-->
+</routes>

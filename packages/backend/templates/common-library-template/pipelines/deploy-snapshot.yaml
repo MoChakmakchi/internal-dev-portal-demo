@@ -1,0 +1,14 @@
+resources:
+  repositories:
+    - repository: pipeline-templates
+      type: git
+      name: pipeline-templates
+
+trigger:
+  - develop
+
+stages:
+  - stage: Deploy_Snapshot
+    displayName: Deploy_Snapshot
+    jobs:
+      - template: build/deploy-snapshot.yaml@pipeline-templates

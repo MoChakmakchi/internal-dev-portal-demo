@@ -1,0 +1,16 @@
+
+   ${AnsiColor.BRIGHT_BLUE}NNNNNNNNNNNNNNNNNNNNh${AnsiColor.YELLOW}/${AnsiColor.BRIGHT_GREEN}NNNNNNd
+   ${AnsiColor.BRIGHT_BLUE}MMMMMMMMMMMMMMMMMMMM/${AnsiColor.YELLOW}n${AnsiColor.BRIGHT_GREEN}MMMMMMm     ${AnsiColor.BRIGHT_BLUE}         ///////      /////:          ///   :////:   ://///         .///`     ///////         ${AnsiColor.DEFAULT}
+   ${AnsiColor.BRIGHT_BLUE}MMMMMMMMMMMMMMMMMMMM${AnsiColor.YELLOW}n;${AnsiColor.BRIGHT_GREEN}MMMMMMm     ${AnsiColor.BRIGHT_BLUE}         sdddddd:     `sdddd:       .hdh:   `yddds   `odddd+       `ydd/      odddddd/        ${AnsiColor.DEFAULT}
+   ${AnsiColor.BRIGHT_BLUE}MMMMMMMMMMMMMMMMMMMM${AnsiColor.YELLOW}m;${AnsiColor.BRIGHT_GREEN}MMMMMMm     ${AnsiColor.BRIGHT_BLUE}        /ddhodddh.     `hdddh.     `ydd/     sddds    `sdddd:      oddo      /ddhodddh-       ${AnsiColor.DEFAULT}
+   ${AnsiColor.BRIGHT_BLUE}MMMMMMMMMMMMMMMMMMMM${AnsiColor.YELLOW}mm${AnsiColor.BRIGHT_GREEN}MMMMMMm     ${AnsiColor.BRIGHT_BLUE}       :hdh- sdddy`     -hdddy`    sddo      sddds     `hdddh.    +dds`     :hdh- sdddy`      ${AnsiColor.DEFAULT}
+   ${AnsiColor.BRIGHT_BLUE}MMMMMMMMMMMMMMMMMMM/${AnsiColor.YELLOW}mn${AnsiColor.BRIGHT_GREEN}mMMMMMm     ${AnsiColor.BRIGHT_BLUE}      -hdh:  `yddds      /dddds   +dds       sddds      -hdddy`  :ddy`     -hdh:  `yddds      ${AnsiColor.DEFAULT}
+   ${AnsiColor.BRIGHT_BLUE}MMMMMMMMMMMMMMMMMMMs${AnsiColor.YELLOW}mn${AnsiColor.BRIGHT_GREEN}dMMMMMm     ${AnsiColor.BRIGHT_BLUE}     .hdds::::+dddd/      odddd/ :ddy`       sddds       /ddddo -hdh.     .hdds::::+dddd+     ${AnsiColor.DEFAULT}
+   ${AnsiColor.BRIGHT_BLUE}MMMMMMMMMMMMMMMMMMM+${AnsiColor.YELLOW}mm${AnsiColor.BRIGHT_GREEN}yMMMMMm     ${AnsiColor.BRIGHT_BLUE}    `yddssssssssdddd-     `ydddd+hdh.        sddds        odddd+hdd:     `yddssssssssdddd-    ${AnsiColor.DEFAULT}
+   ${AnsiColor.BRIGHT_BLUE}MMMMMMMMMMMMMMMMMMM${AnsiColor.YELLOW}zooz${AnsiColor.BRIGHT_GREEN}MMMMMm     ${AnsiColor.BRIGHT_BLUE}   `yddo        odddh`     .hdddddd:         sddds        `ydddddd+     `yddo        odddh.   ${AnsiColor.DEFAULT}
+   ${AnsiColor.BRIGHT_BLUE}MMMMMMMMMMMMMMMMMMN${AnsiColor.YELLOW}qzoz${AnsiColor.BRIGHT_GREEN}MMMMMm     ${AnsiColor.BRIGHT_BLUE}   sdds          ydddy      -hdddd/          sddds         .hddddo      sdds          ydddy   ${AnsiColor.DEFAULT}
+   ${AnsiColor.BRIGHT_BLUE}MMMMMMMMMMMMMMMMMMd${AnsiColor.YELLOW}qqzq${AnsiColor.BRIGHT_GREEN}NMMMMm
+   ${AnsiColor.BRIGHT_BLUE}MMMMMMMMMMMMMMMMMM${AnsiColor.YELLOW}yzzzz${AnsiColor.BRIGHT_GREEN}hddddh
+   ${AnsiColor.BRIGHT_BLUE}MMMMMMMNmmhyso+/:${AnsiColor.YELLOW}zyyr-'${AnsiColor.BRIGHT_GREEN}'`````
+   ${AnsiColor.BRIGHT_BLUE}MNmhs+:-.`
+   ${AnsiColor.BRIGHT_BLUE}:-`${AnsiColor.DEFAULT}

@@ -1,0 +1,26 @@
+apiVersion: backstage.io/v1alpha1
+kind: System
+metadata:
+  name: medical-health
+  description: Manage your medical health
+spec:
+  owner: health-team
+  domain: health
+---
+apiVersion: backstage.io/v1alpha1
+kind: System
+metadata:
+  name: mental-health
+  description: Manage your mental health
+spec:
+  owner: health-team
+  domain: health
+---
+apiVersion: backstage.io/v1alpha1
+kind: System
+metadata:
+  name: life-health
+  description: Manage your life health
+spec:
+  owner: health-team
+  domain: health

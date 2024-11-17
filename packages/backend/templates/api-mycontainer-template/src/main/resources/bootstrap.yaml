@@ -1,0 +1,52 @@
+spring:
+  application:
+    name: ${artifactId}
+
+  profiles:
+    default: local
+
+---
+# Environment for running the API locally on a developer's machine.
+spring:
+  config:
+    activate:
+      on-profile:
+        - local
+        - test
+  cloud:
+    bootstrap:
+      enabled: false
+    config:
+      enabled: false
+    vault:
+      enabled: false
+---
+spring:
+  config:
+    activate:
+      on-profile:
+        - dev
+        - sprint
+        - runway
+        - preprod
+        - staging
+        - nonprod
+        - preview
+  cloud:
+    config:
+      uri: https://api.integration.nonprod.aws-euw1-np.avivacloud.com/admin/config
+      username: config-server-client
+    vault:
+      host: vault.management.aws-euw1-np.avivacloud.com
+---
+spring:
+  config:
+    activate:
+      on-profile:
+        - prod
+  cloud:
+    config:
+      uri: https://api.integration.apps.aws-euw1.avivacloud.com/admin/config
+      username: config-server-client
+    vault:
+      host: vault.management.aws-euw1.avivacloud.com

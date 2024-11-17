@@ -1,0 +1,11 @@
+resources:
+  repositories:
+    - repository: pipeline-templates
+      type: git
+      name: pipeline-templates
+
+trigger:
+  - none
+
+stages:
+  - template: build/stages/build-scan.yaml@pipeline-templates

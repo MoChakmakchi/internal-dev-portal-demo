@@ -1,0 +1,19 @@
+<!--Use this package to ONLY If you API is using the XML-DSL.-->
+<!--All the API XML beans configs and endpoint configs needs to be placed in this package.-->
+<!--if your API is a java-dsl then delete the package.-->
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:cxf="http://camel.apache.org/schema/cxf"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://camel.apache.org/schema/cxf http://camel.apache.org/schema/cxf/camel-cxf.xsd">
+
+    <cxf:rsClient id="exampleEndpoint">
+        <cxf:properties>
+            <entry key="dataFormat" value="POJO"/>
+        </cxf:properties>
+        <cxf:features>
+            <ref bean="example"/>
+        </cxf:features>
+    </cxf:rsClient>
+
+</beans>

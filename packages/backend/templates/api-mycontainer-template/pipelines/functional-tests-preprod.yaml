@@ -1,0 +1,14 @@
+resources:
+  repositories:
+    - repository: templates
+      type: git
+      name: pipeline-templates
+
+variables:
+  - group: REPLACE-ME-WITH-VARIABLE-GROUP-NAME
+  - group: Stash Credentials
+
+jobs:
+  - template: build/functional-tests.yaml@templates
+    parameters:
+      environment: preprod

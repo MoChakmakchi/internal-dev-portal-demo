@@ -1,0 +1,168 @@
+app:
+  title: Backstage Demo
+  baseUrl: http://localhost:3000
+
+organization:
+  name: Backstage Demo
+
+backend:
+  # Used for enabling authentication, secret is shared by all backend plugins
+  # See https://backstage.io/docs/tutorials/backend-to-backend-auth for
+  # information on the format
+  # auth:
+  #   keys:
+  #     - secret: ${BACKEND_SECRET}
+  baseUrl: http://localhost:7007
+  listen:
+    port: 7007
+    # Uncomment the following host directive to bind to all IPv4 interfaces and
+    # not just the baseUrl hostname.
+    # host: 0.0.0.0
+  csp:
+    connect-src: ["'self'", 'http:', 'https:']
+    # Content-Security-Policy directives follow the Helmet format: https://helmetjs.github.io/#reference
+    # Default Helmet Content-Security-Policy values can be removed by setting the key to false
+  cors:
+    origin: http://localhost:3000
+    methods: [GET, POST, PUT, DELETE]
+    credentials: true
+  # This is for local developement only, it is not recommended to use this in production
+  # The production database configuration is stored in app-config.production.yaml
+  database:
+    client: pg
+    connection:
+      host: localhost
+      user: postgres
+      password: backstage
+      port: 5432
+    plugin:
+      auth:
+        connection:
+          database: pg_auth_set_by_user
+  cache:
+    store: memory
+  # workingDirectory: /tmp # Use this to configure a working directory for the scaffolder, defaults to the OS temp-dir
+
+integrations:
+  github:
+    - host: github.com
+      # This is a Personal Access Token or PAT from GitHub. You can find out how to generate this token, and more information
+      # about setting up the GitHub integration here: https://backstage.io/docs/getting-started/configuration#setting-up-a-github-integration
+      token: ${GITHUB_TOKEN}
+    ### Example for how to add your GitHub Enterprise instance using the API:
+    # - host: ghe.example.net
+    #   apiBaseUrl: https://ghe.example.net/api/v3
+    #   token: ${GHE_TOKEN}
+
+proxy:
+  '/sonarqube':
+    target: ${SONARQUBE_BASE}/api
+    allowedMethods: ['GET']
+    auth: 'squ_c55b5385d9a060f09a95ada1e22559d65f17e809:'
+  '/grafana/api':
+    # May be an internal DNS
+    target: ${GRAFANA_TARGET}
+    headers:
+      #TODO - fix spelling
+      Authorization: Bearer ${GRAFNA_AUTH_TOKEN}
+  '/prometheus/api':
+    target: http://${PROM_HOST}:9090/api/v1/
+
+grafana:
+  # Publicly accessible domain
+  domain: https://grafana.konglocal.com
+
+sonarQube:
+  baseUrl: https://sonarqube.konglocal.com:9000
+
+# Reference documentation http://backstage.io/docs/features/techdocs/configuration
+# Note: After experimenting with basic setup, use CI/CD to generate docs
+# and an external cloud storage when deploying TechDocs for production use-case.
+# https://backstage.io/docs/features/techdocs/how-to-guides#how-to-migrate-from-techdocs-basic-to-recommended-deployment-approach
+techdocs:
+  builder: 'external' # Alternatives - 'external'
+  generator:
+    runIn: 'docker' # Alternatives - 'local'
+  publisher:
+    type: 'awsS3'
+    awsS3:
+      bucketName: 'ak-backstage-demo'
+      region: ${AWS_REGION}
+      credentials:
+        accessKeyId: ${AWS_ACCESS_KEY_ID}
+        secretAccessKey: ${AWS_SECRET_ACCESS_KEY}
+
+auth:
+  environment: development
+  providers:
+    github:
+      development:
+        clientId: ${GITHUB_AUTH_CLIENT_ID}
+        clientSecret: ${GITHUB_AUTH_CLIENT_SECRET}
+    microsoft:
+      development:
+        clientId: ${AZURE_AD_AUTH_CLIENT_ID}
+        clientSecret: ${AZURE_AD_AUTH_CLIENT_SECRET}
+        tenantId: ${AZURE_AD_AUTH_TENANT_ID}
+
+scaffolder:
+  # see https://backstage.io/docs/features/software-templates/configuration for software template options
+
+catalog:
+  providers:
+    microsoftGraphOrg:
+      providerId:
+        target: https://graph.microsoft.com/v1.0
+        authority: https://login.microsoftonline.com
+        tenantId: ${AZURE_AD_AUTH_TENANT_ID}
+        clientId: ${AZURE_AD_AUTH_CLIENT_ID}
+        clientSecret: ${AZURE_AD_AUTH_CLIENT_SECRET}
+        queryMode: basic # basic | advanced
+#        user:
+#          filter: accountEnabled eq true and userType eq 'member'
+#        group:
+#          filter: securityEnabled eq false and mailEnabled eq true and groupTypes/any(c:c+eq+'Unified')
+#          select: ['id', 'displayName', 'description']
+  import:
+    entityFilename: catalog-info.yaml
+    pullRequestBranchName: backstage-integration
+  rules:
+    - allow: [Component, System, API, Resource, Location, Template]
+  locations:
+    - type: url
+      target: https://github.com/andrewgkew/backstage-templates/blob/master/techdocs/template.yaml
+      rules:
+        - allow: [ Template ]
+
+    - type: url
+      target: https://github.com/andrewgkew/backstage-templates/blob/master/springboot-api/template.yaml
+      rules:
+        - allow: [ Template ]
+
+    - type: url
+      target: https://github.com/andrewgkew/backstage-templates/blob/master/org/org.yaml
+      rules:
+        - allow: [Group, System, Domain, Resource]
+
+    - type: file
+      target: templates/common-library-template.yaml
+    
+    - type: file
+      target: templates/api-myapi-template.yaml
+    
+    - type: file
+      target: templates/api-mycontainer-template.yaml
+
+#
+kubernetes:
+  serviceLocatorMethod:
+    type: 'multiTenant'
+  clusterLocatorMethods:
+    - type: 'config'
+      clusters:
+        - url: ${EKS_CONTROL_PLANE_URL}
+          name: aws-eks-cluster
+          authProvider: 'serviceAccount'
+          serviceAccountToken: ${AWS_SERVICE_ACCOUNT_TOKEN}
+          skipTLSVerify: true
+          skipMetricsLookup: false

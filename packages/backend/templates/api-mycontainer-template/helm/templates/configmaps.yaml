@@ -1,0 +1,16 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ include "avivaspringinitializr.fullname" . }}-config
+data:
+  {{- (.Files.Glob "config/#{ENV_NAME}#/*.yaml").AsConfig | nindent 2 }}
+
+---
+
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ include "avivaspringinitializr.fullname" . }}-vault-config
+data:
+  {{- (.Files.Glob "config/#{ENV_NAME}#/*.hcl").AsConfig | nindent 2 }}
+  

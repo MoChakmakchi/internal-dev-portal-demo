@@ -1,0 +1,19 @@
+#set( $symbol_pound = '#' )
+#set( $symbol_dollar = '$' )
+#set( $symbol_escape = '\' )
+
+   ${symbol_dollar}{AnsiColor.BRIGHT_BLUE}NNNNNNNNNNNNNNNNNNNNh${symbol_dollar}{AnsiColor.YELLOW}/${symbol_dollar}{AnsiColor.BRIGHT_GREEN}NNNNNNd
+   ${symbol_dollar}{AnsiColor.BRIGHT_BLUE}MMMMMMMMMMMMMMMMMMMM/${symbol_dollar}{AnsiColor.YELLOW}n${symbol_dollar}{AnsiColor.BRIGHT_GREEN}MMMMMMm     ${symbol_dollar}{AnsiColor.BRIGHT_BLUE}         ///////      /////:          ///   :////:   ://///         .///`     ///////         ${symbol_dollar}{AnsiColor.DEFAULT}
+   ${symbol_dollar}{AnsiColor.BRIGHT_BLUE}MMMMMMMMMMMMMMMMMMMM${symbol_dollar}{AnsiColor.YELLOW}n;${symbol_dollar}{AnsiColor.BRIGHT_GREEN}MMMMMMm     ${symbol_dollar}{AnsiColor.BRIGHT_BLUE}         sdddddd:     `sdddd:       .hdh:   `yddds   `odddd+       `ydd/      odddddd/        ${symbol_dollar}{AnsiColor.DEFAULT}
+   ${symbol_dollar}{AnsiColor.BRIGHT_BLUE}MMMMMMMMMMMMMMMMMMMM${symbol_dollar}{AnsiColor.YELLOW}m;${symbol_dollar}{AnsiColor.BRIGHT_GREEN}MMMMMMm     ${symbol_dollar}{AnsiColor.BRIGHT_BLUE}        /ddhodddh.     `hdddh.     `ydd/     sddds    `sdddd:      oddo      /ddhodddh-       ${symbol_dollar}{AnsiColor.DEFAULT}
+   ${symbol_dollar}{AnsiColor.BRIGHT_BLUE}MMMMMMMMMMMMMMMMMMMM${symbol_dollar}{AnsiColor.YELLOW}mm${symbol_dollar}{AnsiColor.BRIGHT_GREEN}MMMMMMm     ${symbol_dollar}{AnsiColor.BRIGHT_BLUE}       :hdh- sdddy`     -hdddy`    sddo      sddds     `hdddh.    +dds`     :hdh- sdddy`      ${symbol_dollar}{AnsiColor.DEFAULT}
+   ${symbol_dollar}{AnsiColor.BRIGHT_BLUE}MMMMMMMMMMMMMMMMMMM/${symbol_dollar}{AnsiColor.YELLOW}mn${symbol_dollar}{AnsiColor.BRIGHT_GREEN}mMMMMMm     ${symbol_dollar}{AnsiColor.BRIGHT_BLUE}      -hdh:  `yddds      /dddds   +dds       sddds      -hdddy`  :ddy`     -hdh:  `yddds      ${symbol_dollar}{AnsiColor.DEFAULT}
+   ${symbol_dollar}{AnsiColor.BRIGHT_BLUE}MMMMMMMMMMMMMMMMMMMs${symbol_dollar}{AnsiColor.YELLOW}mn${symbol_dollar}{AnsiColor.BRIGHT_GREEN}dMMMMMm     ${symbol_dollar}{AnsiColor.BRIGHT_BLUE}     .hdds::::+dddd/      odddd/ :ddy`       sddds       /ddddo -hdh.     .hdds::::+dddd+     ${symbol_dollar}{AnsiColor.DEFAULT}
+   ${symbol_dollar}{AnsiColor.BRIGHT_BLUE}MMMMMMMMMMMMMMMMMMM+${symbol_dollar}{AnsiColor.YELLOW}mm${symbol_dollar}{AnsiColor.BRIGHT_GREEN}yMMMMMm     ${symbol_dollar}{AnsiColor.BRIGHT_BLUE}    `yddssssssssdddd-     `ydddd+hdh.        sddds        odddd+hdd:     `yddssssssssdddd-    ${symbol_dollar}{AnsiColor.DEFAULT}
+   ${symbol_dollar}{AnsiColor.BRIGHT_BLUE}MMMMMMMMMMMMMMMMMMM${symbol_dollar}{AnsiColor.YELLOW}zooz${symbol_dollar}{AnsiColor.BRIGHT_GREEN}MMMMMm     ${symbol_dollar}{AnsiColor.BRIGHT_BLUE}   `yddo        odddh`     .hdddddd:         sddds        `ydddddd+     `yddo        odddh.   ${symbol_dollar}{AnsiColor.DEFAULT}
+   ${symbol_dollar}{AnsiColor.BRIGHT_BLUE}MMMMMMMMMMMMMMMMMMN${symbol_dollar}{AnsiColor.YELLOW}qzoz${symbol_dollar}{AnsiColor.BRIGHT_GREEN}MMMMMm     ${symbol_dollar}{AnsiColor.BRIGHT_BLUE}   sdds          ydddy      -hdddd/          sddds         .hddddo      sdds          ydddy   ${symbol_dollar}{AnsiColor.DEFAULT}
+   ${symbol_dollar}{AnsiColor.BRIGHT_BLUE}MMMMMMMMMMMMMMMMMMd${symbol_dollar}{AnsiColor.YELLOW}qqzq${symbol_dollar}{AnsiColor.BRIGHT_GREEN}NMMMMm
+   ${symbol_dollar}{AnsiColor.BRIGHT_BLUE}MMMMMMMMMMMMMMMMMM${symbol_dollar}{AnsiColor.YELLOW}yzzzz${symbol_dollar}{AnsiColor.BRIGHT_GREEN}hddddh
+   ${symbol_dollar}{AnsiColor.BRIGHT_BLUE}MMMMMMMNmmhyso+/:${symbol_dollar}{AnsiColor.YELLOW}zyyr-'${symbol_dollar}{AnsiColor.BRIGHT_GREEN}'`````
+   ${symbol_dollar}{AnsiColor.BRIGHT_BLUE}MNmhs+:-.`
+   ${symbol_dollar}{AnsiColor.BRIGHT_BLUE}:-`${symbol_dollar}{AnsiColor.DEFAULT}

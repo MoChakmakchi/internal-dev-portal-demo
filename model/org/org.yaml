@@ -1,0 +1,30 @@
+apiVersion: backstage.io/v1alpha1
+kind: Group
+metadata:
+  name: aviva
+  description: The Aviva organization
+  links:
+    - url: https://www.aviva.co.uk/
+      title: Website
+spec:
+  type: organization
+  profile:
+    displayName: Aviva PLC
+    email: info@aviva.co.uk
+    picture: https://static.aviva.io/content/dam/aviva-corporate/images/aviva%20logo%20transparent.svg
+  children: [infrastructure]
+---
+apiVersion: backstage.io/v1alpha1
+kind: Location
+metadata:
+  name: internal-teams
+  description: A collection of internal Aviva teams
+spec:
+  targets:
+    - ./pensions.yaml
+    - ./gi.yaml
+    - ./health.yaml
+    - ./platform.yaml
+    - ../domains/health.yaml
+    - ../systems/health.yaml
+---

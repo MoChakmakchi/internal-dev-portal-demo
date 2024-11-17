@@ -1,0 +1,114 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ include "avivaspringinitializr.fullname" . }}
+  labels:
+    {{- include "avivaspringinitializr.labels" . | nindent 4 }}
+spec:
+  {{- if not .Values.autoscaling.enabled }}
+  replicas: {{ .Values.replicaCount }}
+  {{- end }}
+  selector:
+    matchLabels:
+      {{- include "avivaspringinitializr.selectorLabels" . | nindent 6 }}
+  template:
+    metadata:
+      {{- with .Values.podAnnotations }}
+      annotations:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      labels:
+        {{- include "avivaspringinitializr.selectorLabels" . | nindent 8 }}
+    spec:
+      {{- with .Values.imagePullSecrets }}
+      imagePullSecrets:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      serviceAccountName: {{ .Values.serviceAccount.name }}
+#      automountServiceAccountToken: false
+      securityContext:
+        {{- toYaml .Values.podSecurityContext | nindent 8 }}
+      initContainers:
+        - name: vault-agent
+          image: 818213630802.dkr.ecr.eu-west-1.amazonaws.com/hashicorp/vault-enterprise:1.3.2_ent
+          imagePullPolicy: IfNotPresent
+          volumeMounts:
+            - name: vault-token
+              mountPath: /home/vault
+            - name: config
+              mountPath: /etc/vault
+            - name: vault-secrets
+              mountPath: /vault/secrets
+          env:
+            - name: VAULT_ADDR
+              value: https://vault.management.aws-euw1-np.avivacloud.com
+            - name: SKIP_SETCAP
+              value: "false"
+          args:
+            [
+                "agent",
+                "-config=/etc/vault/vault-agent-config.hcl",
+                "-log-level=debug",
+            ]
+
+      containers:
+        - name: {{ .Chart.Name }}
+          securityContext:
+            {{- toYaml .Values.securityContext | nindent 12 }}
+          image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
+          imagePullPolicy: {{ .Values.image.pullPolicy }}
+          env:
+            - name: spring.config.location
+              value: file:///application/config/application.yaml,optional:file:///vault/secrets/vault.yaml
+          ports:
+            - name: http
+              containerPort: {{ .Values.image.containerPort }}
+              protocol: TCP
+          livenessProbe:
+            httpGet:
+              path: /actuator/health
+              port: http
+          readinessProbe:
+            httpGet:
+              path: /actuator/health
+              port: http
+          resources:
+            {{- toYaml .Values.resources | nindent 12 }}
+          volumeMounts:
+            - name: application-config
+              mountPath: "/application/config"
+              readOnly: true
+            - name: vault-secrets
+              mountPath: /vault/secrets
+      volumes:
+        - name: application-config
+          configMap:
+            name: {{ include "avivaspringinitializr.fullname" . }}-config
+            items:
+            - key: application.yaml
+              path: application.yaml
+        - name: vault-token
+          emptyDir:
+            medium: Memory
+        - name: config
+          configMap:
+            name: {{ include "avivaspringinitializr.fullname" . }}-vault-config
+            defaultMode: 0777
+            items:
+              - key: vault-agent-config.hcl
+                path: vault-agent-config.hcl
+        - name: vault-secrets
+          emptyDir:
+            medium: Memory
+      {{- with .Values.nodeSelector }}
+      nodeSelector:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      {{- with .Values.affinity }}
+      affinity:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      {{- with .Values.tolerations }}
+      tolerations:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}

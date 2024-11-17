@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+
+    <appender name="APPLICATION_LOG"  class="ch.qos.logback.core.ConsoleAppender">
+        <filter
+                class="com.aviva.uk.integration.common.logging.filter.ActuatorFilter"/>
+        <layout class="com.aviva.uk.integration.common.logging.layout.ApplicationLayout">
+            <jsonFormatter
+                    class="ch.qos.logback.contrib.jackson.JacksonJsonFormatter">
+                <prettyPrint>true</prettyPrint>
+
+            </jsonFormatter>
+            <timestampFormat>yyyy-MM-dd' 'HH:mm:ss.SSS</timestampFormat>
+            <appendLineSeparator>true</appendLineSeparator>
+
+        </layout>
+    </appender>
+    <appender name="TRANSACTION_LOG"  class="ch.qos.logback.core.ConsoleAppender">
+
+        <filter
+                class="com.aviva.uk.integration.common.logging.filter.ActuatorFilter"/>
+        <layout class="com.aviva.uk.integration.common.logging.layout.ApplicationLayout">
+            <jsonFormatter
+                    class="ch.qos.logback.contrib.jackson.JacksonJsonFormatter">
+                <prettyPrint>true</prettyPrint>
+
+            </jsonFormatter>
+            <timestampFormat>yyyy-MM-dd' 'HH:mm:ss.SSS</timestampFormat>
+            <appendLineSeparator>true</appendLineSeparator>
+
+        </layout>
+    </appender>
+    <appender name="EVENTS_LOG"  class="ch.qos.logback.core.ConsoleAppender">
+        <filter
+                class="com.aviva.uk.integration.common.logging.filter.ActuatorFilter"/>
+        <layout class="com.aviva.uk.integration.common.logging.layout.ApplicationLayout">
+            <jsonFormatter
+                    class="ch.qos.logback.contrib.jackson.JacksonJsonFormatter">
+                <prettyPrint>true</prettyPrint>
+
+            </jsonFormatter>
+            <timestampFormat>yyyy-MM-dd' 'HH:mm:ss.SSS</timestampFormat>
+            <appendLineSeparator>true</appendLineSeparator>
+
+        </layout>
+    </appender>
+
+    <logger
+            name="com.aviva.uk.integration.common.logging.filter.LoggingFilter"
+            level="INFO" additivity="false">
+        <appender-ref ref="TRANSACTION_LOG" />
+    </logger>
+
+    <logger
+            name="com.aviva.uk.integration.common.logging.logger.EventLogger"
+            additivity="false">
+        <appender-ref ref="EVENTS_LOG"/>
+    </logger>
+    <root level="INFO">
+        <appender-ref ref="APPLICATION_LOG"/>
+    </root>
+
+</configuration>

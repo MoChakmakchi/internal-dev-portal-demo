@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--Use this package to ONLY If you API is using the XML-DSL.-->
+<!--All the API XML beans configs and endpoint configs needs to be placed in this package.-->
+<!--if your API is a java-dsl then delete the package.-->
+<beans xmlns="http://www.springframework.org/schema/beans"
+     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+     xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean id="example" class="com.aviva.uk.integration.models.Example"/>
+
+</beans>
+

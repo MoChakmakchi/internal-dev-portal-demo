@@ -1,0 +1,26 @@
+trigger: none
+pr: none
+resources:
+  repositories:
+    - repository: pipeline-templates
+      type: git
+      name: pipeline-templates
+
+  pipelines:
+    - pipeline: example-api-mycontainer-release-pipeline
+      source: example-api-mycontainer-release
+      trigger: true
+
+variables:
+  - name: pipeline
+    value: $(resources.pipeline.example-api-mycontainer-release-pipeline.pipelineID)
+  - name: isempty
+    value: $(resources.pipeline.isempty.pipelineID)
+  - name: pipelineTriggerId
+    value: $[ coalesce(variables.pipeline, variables.isempty) ]
+
+stages:
+  - template: build/stages/image-build-scan-release.yaml@pipeline-templates
+    parameters:
+      pipelineId: $(pipelineTriggerId)
+      dockertag: 'enterprise-integration/example-api-mycontainer'

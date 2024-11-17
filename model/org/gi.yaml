@@ -1,0 +1,13 @@
+apiVersion: backstage.io/v1alpha1
+kind: Group
+metadata:
+  name: gi-team
+  description: GI Team
+spec:
+  type: team
+  profile:
+    # Intentional no displayName for testing
+    email: gi@aviva.co.uk
+    picture: https://avatars.dicebear.com/api/identicon/team-a@example.com.svg?background=%23fff&margin=25
+  parent: backstage
+  children: []

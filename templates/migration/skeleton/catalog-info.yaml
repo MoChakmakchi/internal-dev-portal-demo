@@ -1,0 +1,39 @@
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: ${{ values.name }}
+  description: ${{ values.description }}
+  annotations:
+    backstage.io/techdocs-ref: dir:.
+    github.com/project-slug: andrewgkew/backstage-petstore-api
+    backstage.io/code-coverage: enabled
+    sonarqube.org/project-key: backstage-petstore-api
+    aws.com/lambda-function-name: pet-store-lambda
+    aws.com/lambda-region: eu-west-2
+    grafana/tag-selector: "apis"
+    prometheus.io/rule: node_load1{job="node-exporter"}|instance,node_load5{job="node-exporter"}|instance,node_load15{job="node-exporter"}|instance
+  tags:
+    - api
+    - ${{ values.system }}
+spec:
+  type: service
+  owner: ${{ values.owner }}
+  lifecycle: experimental
+  system: ${{ values.system }}
+  providesApis:
+    - ${{ values.name }}
+---
+apiVersion: backstage.io/v1alpha1
+kind: API
+metadata:
+  name: ${{ values.name }}
+  description: ${{ values.description }}
+  tags:
+    - ${{ values.system }}
+spec:
+  type: openapi
+  lifecycle: experimental
+  owner: ${{ values.owner }}
+  system: ${{ values.system }}
+  definition:
+    $text: ${{ parameters.repoUrl }}/spec/spec.yaml
